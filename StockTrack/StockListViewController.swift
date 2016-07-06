@@ -12,6 +12,12 @@ class StockListViewController: UIViewController {
 
     
     
+    /*
+     SETUP CORE DATA TO HANDLE SAVING USER PICKED STOCKS
+     HOPEFULLY IT WILL TAKE CARE OF LOADING THE COUNT OF STOCKS
+	*/
+    
+    
     //MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,9 +31,9 @@ class StockListViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        dispatch_async(dispatch_get_main_queue(), {
-        	self.tableView.reloadData()
-        })
+        dispatch_async(dispatch_get_main_queue()) { 
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -36,12 +42,14 @@ class StockListViewController: UIViewController {
 extension StockListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    	return StockController.sharedController.stocks.count
+        if StockController.sharedController.stocks.count > 0 {
+            return StockController.sharedController.stocks.count
+        }
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("stockCell", forIndexPath: indexPath) as! StockTableViewCell
-        
         let indexPath = StockController.sharedController.stocks[indexPath.row]
         
         cell.updateCell(indexPath)

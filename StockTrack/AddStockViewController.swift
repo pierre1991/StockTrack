@@ -11,6 +11,7 @@ import UIKit
 class AddStockViewController: UIViewController {
 
     
+    var stock: Stock?
     
     //MARK: IBOutlets
     @IBOutlet weak var stockLabel: UITextField!
@@ -27,12 +28,11 @@ class AddStockViewController: UIViewController {
     //MARK: IBActions
     @IBAction func addButtonTapped(sender: AnyObject) {
         if let text = stockLabel.text {
-            StockController.searchStockForInformation(text, completion: { (stock) in
-                if let stock = stock {
-                	StockController.sharedController.stocks.append(stock)
-                }
-            })
-        }
+                StockController.searchStockForInformation(text, completion: { (stock) in
+                    guard let stock = stock else {return}
+                    StockController.sharedController.stocks.append(stock)
+                })
+            }
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
