@@ -11,13 +11,7 @@ import UIKit
 class StockListViewController: UIViewController {
 
     
-    
-    /*
-     SETUP CORE DATA TO HANDLE SAVING USER PICKED STOCKS
-     HOPEFULLY IT WILL TAKE CARE OF LOADING THE COUNT OF STOCKS
-	*/
-    
-    
+	
     //MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -53,6 +47,7 @@ extension StockListViewController: UITableViewDelegate, UITableViewDataSource {
         let indexPath = StockController.sharedController.stocks[indexPath.row]
         
         cell.updateCell(indexPath)
+    	cell.selectionStyle = .None
         
         return cell
     }

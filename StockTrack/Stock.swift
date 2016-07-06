@@ -21,12 +21,12 @@ class Stock {
     
     var name: String?
     var symbol: String?
-    var lastPrice: Double?
-    var marketCap: Double?
-    var volume: Double?
-    var high: Double?
-    var low: Double?
-    var open: Double?
+    var lastPrice: Float?
+    var marketCap: Float?
+    var volume: Float?
+    var high: Float?
+    var low: Float?
+    var open: Float?
     
     init?(jsonDictionary: [String:AnyObject]) {
         guard let name = jsonDictionary[kName] as? String else {
@@ -35,11 +35,11 @@ class Stock {
         }
         self.name = name
         self.symbol = jsonDictionary[kSymbol] as? String
-        self.lastPrice = jsonDictionary[kLastPrice] as? Double
-        self.marketCap = jsonDictionary[kMarketCap] as? Double
-        self.volume = jsonDictionary[kVolume] as? Double
-        self.high = jsonDictionary[kHigh] as? Double
-        self.low = jsonDictionary[kLow] as? Double
-        self.open = jsonDictionary[kOpen] as? Double
+        self.lastPrice = jsonDictionary[kLastPrice] as? Float
+        self.marketCap = jsonDictionary[kMarketCap] as? Float
+        self.volume = jsonDictionary[kVolume] as? Float
+        self.high = jsonDictionary[kHigh] as? Float
+        self.low = jsonDictionary[kLow] as? Float
+        self.open = jsonDictionary[kOpen] as? Float
     }
 }
