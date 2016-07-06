@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		8F10A7A11D2C739000F06E7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10A7A01D2C739000F06E7C /* AppDelegate.swift */; };
-		8F10A7A31D2C739000F06E7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10A7A21D2C739000F06E7C /* ViewController.swift */; };
 		8F10A7A61D2C739000F06E7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F10A7A41D2C739000F06E7C /* Main.storyboard */; };
 		8F10A7A81D2C739000F06E7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F10A7A71D2C739000F06E7C /* Assets.xcassets */; };
 		8F10A7AB1D2C739000F06E7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F10A7A91D2C739000F06E7C /* LaunchScreen.storyboard */; };
 		8F10A7B61D2C739100F06E7C /* StockTrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10A7B51D2C739100F06E7C /* StockTrackTests.swift */; };
 		8F10A7C11D2C739100F06E7C /* StockTrackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10A7C01D2C739100F06E7C /* StockTrackUITests.swift */; };
+		8F10A7CF1D2C73F500F06E7C /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10A7CE1D2C73F500F06E7C /* Stock.swift */; };
+		8F10A7D11D2C7ABA00F06E7C /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10A7D01D2C7ABA00F06E7C /* NetworkController.swift */; };
+		8F10A7D31D2C7CF600F06E7C /* StockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10A7D21D2C7CF600F06E7C /* StockController.swift */; };
+		8F10A7DA1D2CA19900F06E7C /* StockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10A7D91D2CA19900F06E7C /* StockListViewController.swift */; };
+		8F10A7DC1D2CA26F00F06E7C /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10A7DB1D2CA26F00F06E7C /* StockTableViewCell.swift */; };
+		8F10A7E01D2CAED400F06E7C /* AddStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10A7DF1D2CAED300F06E7C /* AddStockViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +41,6 @@
 /* Begin PBXFileReference section */
 		8F10A79D1D2C739000F06E7C /* StockTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F10A7A01D2C739000F06E7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8F10A7A21D2C739000F06E7C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8F10A7A51D2C739000F06E7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8F10A7A71D2C739000F06E7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F10A7AA1D2C739000F06E7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +51,12 @@
 		8F10A7BC1D2C739100F06E7C /* StockTrackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockTrackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F10A7C01D2C739100F06E7C /* StockTrackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTrackUITests.swift; sourceTree = "<group>"; };
 		8F10A7C21D2C739100F06E7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F10A7CE1D2C73F500F06E7C /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		8F10A7D01D2C7ABA00F06E7C /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		8F10A7D21D2C7CF600F06E7C /* StockController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockController.swift; sourceTree = "<group>"; };
+		8F10A7D91D2CA19900F06E7C /* StockListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListViewController.swift; sourceTree = "<group>"; };
+		8F10A7DB1D2CA26F00F06E7C /* StockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
+		8F10A7DF1D2CAED300F06E7C /* AddStockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStockViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +108,15 @@
 			isa = PBXGroup;
 			children = (
 				8F10A7A01D2C739000F06E7C /* AppDelegate.swift */,
-				8F10A7A21D2C739000F06E7C /* ViewController.swift */,
 				8F10A7A41D2C739000F06E7C /* Main.storyboard */,
 				8F10A7A71D2C739000F06E7C /* Assets.xcassets */,
 				8F10A7A91D2C739000F06E7C /* LaunchScreen.storyboard */,
 				8F10A7AC1D2C739000F06E7C /* Info.plist */,
+				8F10A7D41D2C8CB400F06E7C /* Model */,
+				8F10A7D61D2C8CD300F06E7C /* Model Controller */,
+				8F10A7D51D2C8CC100F06E7C /* Controller */,
+				8F10A7DE1D2CAB9B00F06E7C /* View Controller */,
+				8F10A7DD1D2CAB9600F06E7C /* View */,
 			);
 			path = StockTrack;
 			sourceTree = "<group>";
@@ -123,6 +137,47 @@
 				8F10A7C21D2C739100F06E7C /* Info.plist */,
 			);
 			path = StockTrackUITests;
+			sourceTree = "<group>";
+		};
+		8F10A7D41D2C8CB400F06E7C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8F10A7CE1D2C73F500F06E7C /* Stock.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8F10A7D51D2C8CC100F06E7C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8F10A7D01D2C7ABA00F06E7C /* NetworkController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		8F10A7D61D2C8CD300F06E7C /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8F10A7D21D2C7CF600F06E7C /* StockController.swift */,
+			);
+			name = "Model Controller";
+			sourceTree = "<group>";
+		};
+		8F10A7DD1D2CAB9600F06E7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8F10A7DB1D2CA26F00F06E7C /* StockTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		8F10A7DE1D2CAB9B00F06E7C /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8F10A7D91D2CA19900F06E7C /* StockListViewController.swift */,
+				8F10A7DF1D2CAED300F06E7C /* AddStockViewController.swift */,
+			);
+			name = "View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +311,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F10A7A31D2C739000F06E7C /* ViewController.swift in Sources */,
+				8F10A7D31D2C7CF600F06E7C /* StockController.swift in Sources */,
+				8F10A7E01D2CAED400F06E7C /* AddStockViewController.swift in Sources */,
+				8F10A7CF1D2C73F500F06E7C /* Stock.swift in Sources */,
 				8F10A7A11D2C739000F06E7C /* AppDelegate.swift in Sources */,
+				8F10A7D11D2C7ABA00F06E7C /* NetworkController.swift in Sources */,
+				8F10A7DC1D2CA26F00F06E7C /* StockTableViewCell.swift in Sources */,
+				8F10A7DA1D2CA19900F06E7C /* StockListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +544,7 @@
 				8F10A7C71D2C739100F06E7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8F10A7C81D2C739100F06E7C /* Build configuration list for PBXNativeTarget "StockTrackTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +553,7 @@
 				8F10A7CA1D2C739100F06E7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8F10A7CB1D2C739100F06E7C /* Build configuration list for PBXNativeTarget "StockTrackUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +562,7 @@
 				8F10A7CD1D2C739100F06E7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
