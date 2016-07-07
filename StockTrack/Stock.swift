@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Stock {
+class Stock: NSObject, NSCoding {
     
     private let kName = "Name"
     private let kSymbol = "Symbol"
@@ -41,5 +41,20 @@ class Stock {
         self.high = jsonDictionary[kHigh] as? Float
         self.low = jsonDictionary[kLow] as? Float
         self.open = jsonDictionary[kOpen] as? Float
+    }
+    
+    @objc func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.name, forKey: kName)
+    }
+    
+    @objc required init?(coder aDecoder: NSCoder) {
+        guard let name = aDecoder.decodeObjectForKey(kName) as? String else {
+            self.name = ""
+            
+            super.init()
+            return nil
+        }
+        self.name = name
+        super.init()
     }
 }

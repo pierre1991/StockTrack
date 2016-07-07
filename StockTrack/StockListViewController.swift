@@ -20,6 +20,8 @@ class StockListViewController: UIViewController {
     //MARK: View Life Cyce
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -36,19 +38,24 @@ class StockListViewController: UIViewController {
 extension StockListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if StockController.sharedController.stocks.count > 0 {
-            return StockController.sharedController.stocks.count
-        }
-        return 0
+        return StockController.sharedController.stocksArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("stockCell", forIndexPath: indexPath) as! StockTableViewCell
-        let indexPath = StockController.sharedController.stocks[indexPath.row]
+        let indexPath = StockController.sharedController.stocksArray[indexPath.row]
         
         cell.updateCell(indexPath)
     	cell.selectionStyle = .None
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            StockController.sharedController.stocksArray.removeAtIndex(indexPath.row)
+            StockController.sharedController.saveToPersistantStorage()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
     }
 }

@@ -30,9 +30,10 @@ class AddStockViewController: UIViewController {
         if let text = stockLabel.text {
                 StockController.searchStockForInformation(text, completion: { (stock) in
                     guard let stock = stock else {return}
-                    StockController.sharedController.stocks.append(stock)
+                    
+                    StockController.sharedController.addStock(stock)
                 })
-            }
+        }
         dismissViewControllerAnimated(true, completion: nil)
     }
 }

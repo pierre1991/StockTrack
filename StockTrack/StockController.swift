@@ -10,9 +10,15 @@ import Foundation
 
 class StockController {
     
+    private let kStock = "stocks"
+    
     static let sharedController = StockController() 
     
-    var stocks: [Stock] = []
+    var stocksArray: [Stock]
+    init() {
+        stocksArray = []
+        loadFromPersistantStorage()
+    }
     
     
     static func searchStockForInformation(quote: String, completion: (stock: Stock?) -> Void) {
@@ -38,5 +44,37 @@ class StockController {
                 }
             }
         }
+    }
+    
+    
+    
+    
+    //MARK: NSCoding
+    
+    func saveToPersistantStorage() {
+        NSKeyedArchiver.archiveRootObject(stocksArray, toFile: filePath(kStock))
+    }
+    
+    func loadFromPersistantStorage() {
+        let unarchivedStocks = NSKeyedUnarchiver.unarchiveObjectWithFile(filePath(kStock))
+        
+        if let stocks = unarchivedStocks as? [Stock] {
+            self.stocksArray = stocks
+        }
+    }
+    
+    func addStock(stock: Stock) {
+        stocksArray.append(stock)
+        saveToPersistantStorage()
+    }
+    
+
+    
+    func filePath(key: String) -> String {
+        let directoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .AllDomainsMask, true)
+        let documentsPath: AnyObject = directoryPath[0]
+        let stockPath = documentsPath.stringByAppendingString("/\(key).plist")
+        
+        return stockPath
     }
 }
