@@ -45,12 +45,12 @@ class StockController {
             }
         }
     }
+
     
     
     
     
     //MARK: NSCoding
-    
     func saveToPersistantStorage() {
         NSKeyedArchiver.archiveRootObject(stocksArray, toFile: filePath(kStock))
     }

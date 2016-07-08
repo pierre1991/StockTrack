@@ -26,7 +26,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stockCell" rowHeight="80" id="DLQ-JA-cep" customClass="StockTableViewCell" customModule="StockTrack" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DLQ-JA-cep" id="RDp-fa-o7a">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pu8-Gd-iNu">
@@ -107,10 +107,10 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="AbY-m3-p3O">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LEl-eR-uZ4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="LEl-eR-uZ4">
                             <connections>
                                 <action selector="addButtonTapped:" destination="BYZ-38-t0r" id="Ztt-bz-0by"/>
-                                <segue destination="Bu3-e1-yec" kind="presentation" id="klB-DZ-06v"/>
+                                <segue destination="Bu3-e1-yec" kind="show" id="klB-DZ-06v"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -190,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osS-b1-8YD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1170" y="1590.75"/>
+            <point key="canvasLocation" x="1773" y="1040.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EPl-AM-Xsg">

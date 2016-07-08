@@ -34,6 +34,5 @@ class AddStockViewController: UIViewController {
                     StockController.sharedController.addStock(stock)
                 })
         }
-        dismissViewControllerAnimated(true, completion: nil)
     }
 }

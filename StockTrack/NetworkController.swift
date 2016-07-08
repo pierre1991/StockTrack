@@ -16,7 +16,8 @@ class NetworkController {
         return NSURL(string: NetworkController.baseUrl + "\(symbol)")!
     }
     
-    static func dataAtUrl(url: NSURL, completion:(data: NSData?) -> Void) {
+    
+	static func dataAtUrl(url: NSURL, completion:(data: NSData?) -> Void) {
         let session = NSURLSession.sharedSession()
         
         let dataTask = session.dataTaskWithURL(url) { (data, _, error) -> Void in
