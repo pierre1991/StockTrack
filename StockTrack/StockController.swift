@@ -21,6 +21,37 @@ class StockController {
     }
     
     
+    static func lookupStock(stock: String, completion: (stock: Lookup?) -> Void) {
+        if let url = NetworkController.lookupStock(stock) {
+            NetworkController.dataAtUrl(url, completion: { (data) in
+                guard let dataArray = data else {
+                    print("no stock lookup")
+                    return
+                }
+                do {
+                    let resultArray = try NSJSONSerialization.JSONObjectWithData(dataArray, options: .AllowFragments)
+                    
+                    if let lookupArray = resultArray as? [[String:AnyObject]],
+                        lookupDictionary = lookupArray.first {
+                        
+                        let stockLookupObject = Lookup(jsonDictionary: lookupDictionary)
+                        
+                        completion(stock: stockLookupObject)
+                    } else {
+                        completion(stock: nil)
+                    }
+            	} catch {
+                    print("Error serializing data")
+                    completion(stock: nil)
+                    return
+                }
+            })
+        } else {
+            completion(stock: nil)
+        }
+    }
+    
+    
     static func searchStockForInformation(quote: String, completion: (stock: Stock?) -> Void) {
         if let url = NetworkController.searchStockQuote(quote) {
             NetworkController.dataAtUrl(url) { (data) -> Void in
@@ -78,3 +109,58 @@ class StockController {
         return stockPath
     }
 }
+
+/*
+[
+    {
+        "Symbol": "A",
+        "Name": "Agilent Technologies Inc",
+        "Exchange": "NYSE"
+    },
+    {
+        "Symbol": "A",
+        "Name": "Agilent Technologies Inc",
+        "Exchange": "BATS Trading Inc"
+    },
+    {
+        "Symbol": "AA",
+        "Name": "Alcoa Inc",
+        "Exchange": "NYSE"
+    },
+    {
+        "Symbol": "AAON",
+        "Name": "AAON Inc",
+        "Exchange": "NASDAQ"
+    },
+    {
+        "Symbol": "AAP",
+        "Name": "Advance Auto Parts Inc",
+        "Exchange": "NYSE"
+    },
+    {
+        "Symbol": "AAPL",
+        "Name": "Apple Inc",
+        "Exchange": "NASDAQ"
+    },
+    {
+        "Symbol": "AOS",
+        "Name": "A. O. Smith Corp",
+        "Exchange": "NYSE"
+    },
+    {
+        "Symbol": "BBW",
+        "Name": "Build-A-Bear Workshop Inc",
+        "Exchange": "NYSE"
+    },
+    {
+        "Symbol": "CAS",
+        "Name": "A. M. Castle & Co",
+        "Exchange": "NYSE"
+    },
+    {
+        "Symbol": "RCII",
+        "Name": "Rent-A-Center Inc",
+        "Exchange": "NASDAQ"
+    }
+]
+ */

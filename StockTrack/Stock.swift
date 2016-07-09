@@ -10,7 +10,7 @@ import Foundation
 
 class Stock: NSObject, NSCoding {
     
-    private let kName = "Name"
+	private let kName = "Name"
     private let kSymbol = "Symbol"
     private let kLastPrice = "LastPrice"
     private let kMarketCap = "MarketCap"
@@ -58,3 +58,43 @@ class Stock: NSObject, NSCoding {
         super.init()
     }
 }
+
+
+class Lookup {
+    
+    private let kName = "Name"
+    private let kSymbol = "Symbol"
+    private let kExchange = "Exchange"
+    
+    var name: String?
+    var symbol: String?
+    var exchange: String?
+    
+    init?(jsonDictionary: [String:AnyObject]) {
+        guard let name = jsonDictionary[kName] as? String else {
+            self.name = ""
+            return nil
+        }
+        self.name = name
+        self.symbol = jsonDictionary[kSymbol] as? String
+        self.exchange = jsonDictionary[kExchange] as? String
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

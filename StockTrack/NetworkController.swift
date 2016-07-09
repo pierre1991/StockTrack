@@ -10,14 +10,21 @@ import Foundation
 
 class NetworkController {
     
-    static let baseUrl = "http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol="
+
+    static let lookupBaseUrl = "http://dev.markitondemand.com/MODApis/Api/v2/Lookup/json?input="
+    static let quoteBaseUrl = "http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol="
+    
+    
+    static func lookupStock(stock: String) -> NSURL? {
+        return NSURL(string: NetworkController.lookupBaseUrl + "\(stock)")!
+    }
     
     static func searchStockQuote(symbol: String) -> NSURL? {
-        return NSURL(string: NetworkController.baseUrl + "\(symbol)")!
+        return NSURL(string: NetworkController.quoteBaseUrl + "\(symbol)")!
     }
     
     
-	static func dataAtUrl(url: NSURL, completion:(data: NSData?) -> Void) {
+    static func dataAtUrl(url: NSURL, completion:(data: NSData?) -> Void) {
         let session = NSURLSession.sharedSession()
         
         let dataTask = session.dataTaskWithURL(url) { (data, _, error) -> Void in
