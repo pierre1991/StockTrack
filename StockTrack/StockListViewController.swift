@@ -33,6 +33,10 @@ class StockListViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 }
 
 

@@ -21,7 +21,7 @@ class StockController {
     }
     
     
-    static func lookupStock(stock: String, completion: (stockArray: [Lookup]?) -> Void) {
+    static func lookupStock(stock: String, completion: (stockArray: [Stock]?) -> Void) {
         if let url = NetworkController.lookupStock(stock) {
             NetworkController.dataAtUrl(url, completion: { (data) in
                 guard let dataArray = data else {
@@ -31,11 +31,11 @@ class StockController {
                 do {
                     let resultArray = try NSJSONSerialization.JSONObjectWithData(dataArray, options: .AllowFragments) as? [[String:AnyObject]]
                     
-                    var stockLookupArray: [Lookup] = []
+                    var stockLookupArray: [Stock] = []
                     
                     if let resultArray = resultArray {
                     	for stockLookup in resultArray {
-                        	if let stock = Lookup(jsonDictionary: stockLookup) {
+                        	if let stock = Stock(jsonDictionary: stockLookup) {
                             	stockLookupArray.append(stock)
                         	}
                     	}
@@ -77,14 +77,7 @@ class StockController {
             }
         }
     }
-    
-    
-    static func refreshStockInformation(stock: [Stock], completion: (stock: Stock?) -> Void) {
-        let stockList = StockController.sharedController.stocksArray
 
-        
-
-    }
 
     
     

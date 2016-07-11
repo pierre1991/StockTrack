@@ -19,6 +19,8 @@ class Stock: NSObject, NSCoding {
     private let kLow = "Low"
     private let kOpen = "Open"
     
+    private let kExchange = "Exchange"
+    
     var name: String?
     var symbol: String?
     var lastPrice: Float?
@@ -27,6 +29,8 @@ class Stock: NSObject, NSCoding {
     var high: Float?
     var low: Float?
     var open: Float?
+    
+    var exchange: String?
     
     init?(jsonDictionary: [String:AnyObject]) {
         guard let name = jsonDictionary[kName] as? String else {
@@ -41,6 +45,8 @@ class Stock: NSObject, NSCoding {
         self.high = jsonDictionary[kHigh] as? Float
         self.low = jsonDictionary[kLow] as? Float
         self.open = jsonDictionary[kOpen] as? Float
+        
+        self.exchange = jsonDictionary[kExchange] as? String
     }
     
     @objc func encodeWithCoder(aCoder: NSCoder) {
@@ -56,28 +62,6 @@ class Stock: NSObject, NSCoding {
         }
         self.name = name
         super.init()
-    }
-}
-
-
-class Lookup {
-    
-    private let kName = "Name"
-    private let kSymbol = "Symbol"
-    private let kExchange = "Exchange"
-    
-    var name: String?
-    var symbol: String?
-    var exchange: String?
-    
-    init?(jsonDictionary: [String:AnyObject]) {
-        guard let name = jsonDictionary[kName] as? String else {
-            self.name = ""
-            return nil
-        }
-        self.name = name
-        self.symbol = jsonDictionary[kSymbol] as? String
-        self.exchange = jsonDictionary[kExchange] as? String
     }
 }
 

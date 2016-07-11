@@ -12,11 +12,7 @@ class StockSearchViewController: UIViewController {
 
     
     //MARK: Properties
-    var stockList = {
-        StockController.sharedController.stocksArray
-    }
-    
-    var stockSearchResults: [Lookup]?
+    var stockSearchResults: [Stock]?
     
     
     
@@ -37,6 +33,34 @@ class StockSearchViewController: UIViewController {
         
         setupSearchController()
     }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activityIndicatorVisible), name: NSNotifications.kNetworkActivityIndicatorVisible, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activityIndicatorNotVisible), name: NSNotifications.kNetworkActivityIndicatorNotVisible, object: nil)
+    }
+    
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    
+    
+    func activityIndicatorVisible() {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+	}
+    
+    func activityIndicatorNotVisible() {
+    	UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
+    
 }
 
 extension StockSearchViewController: UITableViewDataSource, UITableViewDelegate {
@@ -57,10 +81,11 @@ extension StockSearchViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedItem = 
-        
-        
-        dismissViewControllerAnimated(true, completion: nil)
+        if let stockSearchResults = stockSearchResults {
+            let selectedItem = stockSearchResults[indexPath.row]
+            
+            StockController.sharedController.addStock(selectedItem)
+        }
     }
 }
 
@@ -76,6 +101,8 @@ extension StockSearchViewController: UISearchResultsUpdating, UISearchBarDelegat
         searchController.searchBar.delegate = self
         searchController.searchBar.keyboardAppearance = .Dark
         
+        providesPresentationContextTransitionStyle = true
+        
         
         tableView.tableHeaderView = searchController.searchBar
 	}
@@ -85,6 +112,8 @@ extension StockSearchViewController: UISearchResultsUpdating, UISearchBarDelegat
         let searchTerm = searchController.searchBar.text?.lowercaseString
         
         if let searchTerm = searchTerm {
+            NSNotificationCenter.defaultCenter().postNotificationName(NSNotifications.kNetworkActivityIndicatorVisible, object: nil)
+
             StockController.lookupStock(searchTerm, completion: { (stockArray) in
                 if let stockArray = stockArray {
                     self.stockSearchResults = stockArray
@@ -94,6 +123,8 @@ extension StockSearchViewController: UISearchResultsUpdating, UISearchBarDelegat
                     })
                 }
             })
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(NSNotifications.kNetworkActivityIndicatorNotVisible, object: nil)
         }
     }
 
@@ -106,6 +137,3 @@ extension StockSearchViewController: UISearchResultsUpdating, UISearchBarDelegat
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
-
-
-

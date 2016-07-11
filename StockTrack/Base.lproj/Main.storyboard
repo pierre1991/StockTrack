@@ -149,7 +149,7 @@
                     <view key="view" contentMode="scaleToFill" id="NvE-j6-keZ">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3KU-2N-5RA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3KU-2N-5RA">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -167,60 +167,33 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8PY-XV-WTT">
-                                                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                            <state key="normal" title="+"/>
-                                                            <connections>
-                                                                <action selector="addStockButtonTapped:" destination="Dqh-MT-JST" eventType="touchUpInside" id="tgC-UM-ZyW"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="qEs-dW-hpQ" firstAttribute="top" secondItem="LLj-mr-xZ8" secondAttribute="top" constant="14" id="H4v-jm-KK1"/>
                                                         <constraint firstItem="qEs-dW-hpQ" firstAttribute="leading" secondItem="LLj-mr-xZ8" secondAttribute="leading" constant="8" id="PJX-dM-QdL"/>
-                                                        <constraint firstItem="8PY-XV-WTT" firstAttribute="top" secondItem="LLj-mr-xZ8" secondAttribute="top" constant="17" id="Yxc-YL-XXE"/>
                                                         <constraint firstAttribute="bottom" secondItem="qEs-dW-hpQ" secondAttribute="bottom" constant="13" id="aCc-JC-Ti6"/>
-                                                        <constraint firstAttribute="bottom" secondItem="8PY-XV-WTT" secondAttribute="bottom" constant="16" id="aE9-fY-Eg3"/>
-                                                        <constraint firstAttribute="trailing" secondItem="8PY-XV-WTT" secondAttribute="trailing" constant="8" id="gAa-7O-Udj"/>
-                                                        <constraint firstItem="8PY-XV-WTT" firstAttribute="leading" secondItem="LLj-mr-xZ8" secondAttribute="leading" constant="266" id="jkD-7x-cI0"/>
                                                         <constraint firstAttribute="trailing" secondItem="qEs-dW-hpQ" secondAttribute="trailing" constant="136" id="mQr-bP-mIu"/>
-                                                        <constraint firstItem="8PY-XV-WTT" firstAttribute="leading" secondItem="qEs-dW-hpQ" secondAttribute="trailing" constant="98" id="rjl-eL-eP2"/>
-                                                        <constraint firstItem="8PY-XV-WTT" firstAttribute="leading" secondItem="qEs-dW-hpQ" secondAttribute="trailing" constant="98" id="vYy-23-AAv"/>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="subviews">
                                                             <exclude reference="qEs-dW-hpQ"/>
-                                                            <exclude reference="8PY-XV-WTT"/>
                                                         </mask>
                                                         <mask key="constraints">
                                                             <exclude reference="H4v-jm-KK1"/>
                                                             <exclude reference="PJX-dM-QdL"/>
                                                             <exclude reference="aCc-JC-Ti6"/>
                                                             <exclude reference="mQr-bP-mIu"/>
-                                                            <exclude reference="Yxc-YL-XXE"/>
-                                                            <exclude reference="aE9-fY-Eg3"/>
-                                                            <exclude reference="gAa-7O-Udj"/>
-                                                            <exclude reference="jkD-7x-cI0"/>
-                                                            <exclude reference="rjl-eL-eP2"/>
-                                                            <exclude reference="vYy-23-AAv"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="subviews">
                                                             <include reference="qEs-dW-hpQ"/>
-                                                            <include reference="8PY-XV-WTT"/>
                                                         </mask>
                                                         <mask key="constraints">
                                                             <include reference="H4v-jm-KK1"/>
                                                             <include reference="PJX-dM-QdL"/>
                                                             <include reference="aCc-JC-Ti6"/>
                                                             <include reference="mQr-bP-mIu"/>
-                                                            <include reference="Yxc-YL-XXE"/>
-                                                            <include reference="aE9-fY-Eg3"/>
-                                                            <include reference="gAa-7O-Udj"/>
-                                                            <include reference="jkD-7x-cI0"/>
-                                                            <exclude reference="rjl-eL-eP2"/>
-                                                            <exclude reference="vYy-23-AAv"/>
                                                         </mask>
                                                     </variation>
                                                 </view>

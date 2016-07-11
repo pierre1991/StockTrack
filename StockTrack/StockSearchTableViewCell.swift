@@ -45,7 +45,7 @@ class StockSearchTableViewCell: UITableViewCell {
     
     
     //MARK: Update
-    func updateCell(stock: Lookup) {
+    func updateCell(stock: Stock) {
     	stockName.text = stock.name
     }
     
