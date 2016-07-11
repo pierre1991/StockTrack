@@ -21,7 +21,7 @@ class StockController {
     }
     
     
-    static func lookupStock(stock: String, completion: (stock: Lookup?) -> Void) {
+    static func lookupStock(stock: String, completion: (stockArray: [Lookup]?) -> Void) {
         if let url = NetworkController.lookupStock(stock) {
             NetworkController.dataAtUrl(url, completion: { (data) in
                 guard let dataArray = data else {
@@ -29,25 +29,26 @@ class StockController {
                     return
                 }
                 do {
-                    let resultArray = try NSJSONSerialization.JSONObjectWithData(dataArray, options: .AllowFragments)
+                    let resultArray = try NSJSONSerialization.JSONObjectWithData(dataArray, options: .AllowFragments) as? [[String:AnyObject]]
                     
-                    if let lookupArray = resultArray as? [[String:AnyObject]],
-                        lookupDictionary = lookupArray.first {
-                        
-                        let stockLookupObject = Lookup(jsonDictionary: lookupDictionary)
-                        
-                        completion(stock: stockLookupObject)
-                    } else {
-                        completion(stock: nil)
+                    var stockLookupArray: [Lookup] = []
+                    
+                    if let resultArray = resultArray {
+                    	for stockLookup in resultArray {
+                        	if let stock = Lookup(jsonDictionary: stockLookup) {
+                            	stockLookupArray.append(stock)
+                        	}
+                    	}
                     }
-            	} catch {
+                    completion(stockArray: stockLookupArray)
+                } catch {
                     print("Error serializing data")
-                    completion(stock: nil)
+                    completion(stockArray: nil)
                     return
                 }
             })
         } else {
-            completion(stock: nil)
+            completion(stockArray: nil)
         }
     }
     
