@@ -8,13 +8,26 @@
 
 import UIKit
 
+
+protocol StockSearchTableViewCellDelegate: class {
+    func addStockToList(sender: StockTableViewCell)
+}
+
+
+
 class StockSearchTableViewCell: UITableViewCell {
 
+    
+    //MARK: Delegate
+    weak var stockSearchTableViewDelegate: StockSearchTableViewCellDelegate?
+    
     
     //MARK: IBOutlets
     @IBOutlet weak var stockName: UILabel!
     
     
+    
+    //MARK: View
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -24,6 +37,14 @@ class StockSearchTableViewCell: UITableViewCell {
     }
 
     
+    
+    //MARK: IBAction
+    @IBAction func addStockButtonTapped(sender: AnyObject) {
+
+    }
+    
+    
+    //MARK: Update
     func updateCell(stock: Lookup) {
     	stockName.text = stock.name
     }

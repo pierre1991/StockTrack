@@ -12,6 +12,10 @@ class StockSearchViewController: UIViewController {
 
     
     //MARK: Properties
+    var stockList = {
+        StockController.sharedController.stocksArray
+    }
+    
     var stockSearchResults: [Lookup]?
     
     
@@ -22,7 +26,8 @@ class StockSearchViewController: UIViewController {
     
     
     //MARK: Further UI
-    var searchControlelr: UISearchController!
+    var searchBar: UISearchBar!
+    var searchController: UISearchController!
     
     
     
@@ -50,23 +55,34 @@ extension StockSearchViewController: UITableViewDataSource, UITableViewDelegate 
         }
         return cell
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedItem = 
+        
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 
 
-extension StockSearchViewController: UISearchResultsUpdating {
+extension StockSearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func setupSearchController() {
-        searchControlelr = UISearchController(searchResultsController: nil)
-        searchControlelr.searchResultsUpdater = self
+        searchController = UISearchController(searchResultsController: nil)
         
-        tableView.tableHeaderView = searchControlelr.searchBar
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
         
-        definesPresentationContext = true
-    }
+        searchController.searchBar.delegate = self
+        searchController.searchBar.keyboardAppearance = .Dark
+        
+        
+        tableView.tableHeaderView = searchController.searchBar
+	}
     
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        let searchTerm = searchControlelr.searchBar.text?.lowercaseString
+        let searchTerm = searchController.searchBar.text?.lowercaseString
         
         if let searchTerm = searchTerm {
             StockController.lookupStock(searchTerm, completion: { (stockArray) in
@@ -80,5 +96,16 @@ extension StockSearchViewController: UISearchResultsUpdating {
             })
         }
     }
+
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
+
+
 

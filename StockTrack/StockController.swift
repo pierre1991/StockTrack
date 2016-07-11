@@ -42,7 +42,7 @@ class StockController {
                     }
                     completion(stockArray: stockLookupArray)
                 } catch {
-                    print("Error serializing data")
+                    print("Error serializing lookupStock data")
                     completion(stockArray: nil)
                     return
                 }
@@ -70,12 +70,20 @@ class StockController {
                     }
                     completion(stock: stockObject)
                 } catch {
-                    print("Error serializing data")
+                    print("Error serializing stockInformation data")
                     completion(stock: nil)
                     return
                 }
             }
         }
+    }
+    
+    
+    static func refreshStockInformation(stock: [Stock], completion: (stock: Stock?) -> Void) {
+        let stockList = StockController.sharedController.stocksArray
+
+        
+
     }
 
     
