@@ -78,6 +78,31 @@ class StockController {
         }
     }
 
+    
+//    static func getStockInfo(stock: Stock, completion: (stockInfo: Stock?) -> Void) {
+//        if let url = NetworkController.searchStockForInfo(stock) {
+//            NetworkController.dataAtUrl(url, completion: { (data) in
+//                guard let data = data else {
+//                    print("no stock data")
+//                    return
+//                }
+//                do {
+//                	let resultDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+//                    
+//                    var stockObject: Stock?
+//                    
+//                    if let quoteDictionary = resultDictionary as? [String:AnyObject] {
+//                        stockObject = Stock(jsonDictionary: quoteDictionary)
+//                    }
+//                    completion(stockInfo: stockObject)
+//                } catch {
+//                    print("Error serializing stockInformation data")
+//                    completion(stockInfo: nil)
+//                    return
+//                }
+//            })
+//        }
+//    }
 
     
     

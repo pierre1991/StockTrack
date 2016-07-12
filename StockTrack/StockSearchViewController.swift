@@ -76,6 +76,8 @@ extension StockSearchViewController: UITableViewDataSource, UITableViewDelegate 
         if let stockSearchResults = stockSearchResults {
             let indexPath = stockSearchResults[indexPath.row]
             cell.updateCell(indexPath)
+            
+            cell.selectionStyle = .None
         }
         return cell
     }
