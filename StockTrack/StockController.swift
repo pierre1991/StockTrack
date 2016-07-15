@@ -14,7 +14,9 @@ class StockController {
     
     static let sharedController = StockController() 
     
+    
     var stocksArray: [Stock]
+    
     init() {
         stocksArray = []
         loadFromPersistantStorage()
@@ -53,11 +55,12 @@ class StockController {
     }
     
     
-    static func searchStockForInformation(quote: String, completion: (stock: Stock?) -> Void) {
-        if let url = NetworkController.searchStockQuote(quote) {
-            NetworkController.dataAtUrl(url) { (data) -> Void in
+    static func getStockInfo(stock: String, completion: (stockInformation: Stock?) -> Void) {
+        if let url = NetworkController.searchStockForInfo(stock) {
+            NetworkController.dataAtUrl(url, completion: { (data) in
                 guard let data = data else {
-                    print("no stock data")
+                    print("Error no data")
+                    completion(stockInformation: nil)
                     return
                 }
                 do {
@@ -68,45 +71,18 @@ class StockController {
                     if let quoteDictionary = resultDictionary as? [String:AnyObject] {
                         stockObject = Stock(jsonDictionary: quoteDictionary)
                     }
-                    completion(stock: stockObject)
+                    completion(stockInformation: stockObject)
                 } catch {
-                    print("Error serializing stockInformation data")
-                    completion(stock: nil)
+                    print("Error serializing")
+                    completion(stockInformation: nil)
                     return
                 }
-            }
+            })
         }
     }
+    
+    
 
-    
-//    static func getStockInfo(stock: Stock, completion: (stockInfo: Stock?) -> Void) {
-//        if let url = NetworkController.searchStockForInfo(stock) {
-//            NetworkController.dataAtUrl(url, completion: { (data) in
-//                guard let data = data else {
-//                    print("no stock data")
-//                    return
-//                }
-//                do {
-//                	let resultDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-//                    
-//                    var stockObject: Stock?
-//                    
-//                    if let quoteDictionary = resultDictionary as? [String:AnyObject] {
-//                        stockObject = Stock(jsonDictionary: quoteDictionary)
-//                    }
-//                    completion(stockInfo: stockObject)
-//                } catch {
-//                    print("Error serializing stockInformation data")
-//                    completion(stockInfo: nil)
-//                    return
-//                }
-//            })
-//        }
-//    }
-
-    
-    
-    
     
     //MARK: NSCoding
     func saveToPersistantStorage() {
@@ -126,9 +102,7 @@ class StockController {
         saveToPersistantStorage()
     }
     
-
-    
-    func filePath(key: String) -> String {
+	func filePath(key: String) -> String {
         let directoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .AllDomainsMask, true)
         let documentsPath: AnyObject = directoryPath[0]
         let stockPath = documentsPath.stringByAppendingString("/\(key).plist")
@@ -136,58 +110,3 @@ class StockController {
         return stockPath
     }
 }
-
-/*
-[
-    {
-        "Symbol": "A",
-        "Name": "Agilent Technologies Inc",
-        "Exchange": "NYSE"
-    },
-    {
-        "Symbol": "A",
-        "Name": "Agilent Technologies Inc",
-        "Exchange": "BATS Trading Inc"
-    },
-    {
-        "Symbol": "AA",
-        "Name": "Alcoa Inc",
-        "Exchange": "NYSE"
-    },
-    {
-        "Symbol": "AAON",
-        "Name": "AAON Inc",
-        "Exchange": "NASDAQ"
-    },
-    {
-        "Symbol": "AAP",
-        "Name": "Advance Auto Parts Inc",
-        "Exchange": "NYSE"
-    },
-    {
-        "Symbol": "AAPL",
-        "Name": "Apple Inc",
-        "Exchange": "NASDAQ"
-    },
-    {
-        "Symbol": "AOS",
-        "Name": "A. O. Smith Corp",
-        "Exchange": "NYSE"
-    },
-    {
-        "Symbol": "BBW",
-        "Name": "Build-A-Bear Workshop Inc",
-        "Exchange": "NYSE"
-    },
-    {
-        "Symbol": "CAS",
-        "Name": "A. M. Castle & Co",
-        "Exchange": "NYSE"
-    },
-    {
-        "Symbol": "RCII",
-        "Name": "Rent-A-Center Inc",
-        "Exchange": "NASDAQ"
-    }
-]
- */

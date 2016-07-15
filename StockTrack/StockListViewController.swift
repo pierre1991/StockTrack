@@ -9,18 +9,17 @@
 import UIKit
 
 class StockListViewController: UIViewController {
-
     
-
-    var stock: Stock?
     
+    var stocks: Stock?
+    var stock: [Stock] = {
+        StockController.sharedController.stocksArray
+    }()
 	
+    
+    
     //MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
-    
-    
-    
-    //MARK: FurtherUI
     
     
     
@@ -31,17 +30,8 @@ class StockListViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-//        if let stock = stock {
-//            StockController.searchStockForInformation(stock.name!, completion: { (stock) in
-//                if let stock = stock {
-//
-//                }
-//            })
-//        }
-      
-        
-        dispatch_async(dispatch_get_main_queue()) { 
+
+        dispatch_async(dispatch_get_main_queue()) {
             self.tableView.reloadData()
         }
     }

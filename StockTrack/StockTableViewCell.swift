@@ -10,12 +10,16 @@ import UIKit
 
 class StockTableViewCell: UITableViewCell {
 
+
+    
+    
     
 	//MARK: IBOutlets
     @IBOutlet weak var cellView: UIView!
     
     @IBOutlet weak var stockName: UILabel!
     @IBOutlet weak var stockInfo: UILabel!
+    
     
     
 	override func awakeFromNib() {
@@ -27,11 +31,53 @@ class StockTableViewCell: UITableViewCell {
     }
     
     
+    
     func updateCell(stock: Stock) {
         self.stockName.text = stock.name
 
-        if let stockpriceFloat = stock.lastPrice {
-        	self.stockInfo.text = String(format: "%.2f", stockpriceFloat)
-        }
+	
     }
 }
+        
+       
+
+        
+        
+
+
+        
+
+        
+
+
+//        for stock in StockController.sharedController.stocksArray {
+//            StockController.getStockInfo(stock, completion: { (stockInfo) in
+//                if let stockInfo = stockInfo {
+//                    dispatch_async(dispatch_get_main_queue(), { 
+//                			self.stockInfo.text = String(stockInfo.lastPrice)
+//                    })
+//                }
+//            })
+//        }
+
+
+//StockController.getStockInfo(stock.name!) { (stockInfo) in
+//    if let stockInfo = stockInfo {
+//        dispatch_async(dispatch_get_main_queue(), {
+//            self.stockInfo.text = String(stockInfo.lastPrice)
+//        })
+//    }
+//}
+
+//for stock in StockController.sharedController.stocksArray {
+//    StockController.getStockInfo(stock.name!, completion: { (stockInfo) in
+//        if let stockInfo = stockInfo {
+//            dispatch_async(dispatch_get_main_queue(), {
+//                self.stockInfo.text = String(stockInfo.lastPrice)
+//            })
+//        }
+//    })
+//}
+
+
+

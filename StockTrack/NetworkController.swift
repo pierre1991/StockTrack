@@ -19,8 +19,8 @@ class NetworkController {
         return NSURL(string: NetworkController.lookupBaseUrl + "\(stock)")!
     }
     
-    static func searchStockQuote(symbol: String) -> NSURL? {
-        return NSURL(string: NetworkController.quoteBaseUrl + "\(symbol)")!
+	static func searchStockForInfo(stock: String) -> NSURL? {
+        return NSURL(string: NetworkController.quoteBaseUrl + "\(stock)") ?? nil
     }
     
     

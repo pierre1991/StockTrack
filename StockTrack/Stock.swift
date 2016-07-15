@@ -49,6 +49,9 @@ class Stock: NSObject, NSCoding {
         self.exchange = jsonDictionary[kExchange] as? String
     }
     
+    
+    
+    //MARK: NSCoding
     @objc func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.name, forKey: kName)
     }
@@ -64,21 +67,3 @@ class Stock: NSObject, NSCoding {
         super.init()
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
