@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F08C4681D40A1E800DB01D9 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08C4671D40A1E800DB01D9 /* CustomSearchBar.swift */; };
 		8F10A7A11D2C739000F06E7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10A7A01D2C739000F06E7C /* AppDelegate.swift */; };
 		8F10A7A61D2C739000F06E7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F10A7A41D2C739000F06E7C /* Main.storyboard */; };
 		8F10A7A81D2C739000F06E7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F10A7A71D2C739000F06E7C /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F08C4671D40A1E800DB01D9 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		8F10A79D1D2C739000F06E7C /* StockTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F10A7A01D2C739000F06E7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F10A7A51D2C739000F06E7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				8F10A8271D2DB81F00F06E7C /* ColorPalette.swift */,
 				8F10A82A1D2DB89E00F06E7C /* AppearanceController.swift */,
+				8F08C4671D40A1E800DB01D9 /* CustomSearchBar.swift */,
 			);
 			name = Appearance;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			files = (
 				8F10A7D31D2C7CF600F06E7C /* StockController.swift in Sources */,
 				8F10A7CF1D2C73F500F06E7C /* Stock.swift in Sources */,
+				8F08C4681D40A1E800DB01D9 /* CustomSearchBar.swift in Sources */,
 				8F10A8281D2DB81F00F06E7C /* ColorPalette.swift in Sources */,
 				8F10A82B1D2DB89E00F06E7C /* AppearanceController.swift in Sources */,
 				8F10A7A11D2C739000F06E7C /* AppDelegate.swift in Sources */,
@@ -489,6 +493,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Pierre.StockTrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -500,6 +505,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Pierre.StockTrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

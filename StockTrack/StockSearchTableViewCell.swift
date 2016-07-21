@@ -12,7 +12,9 @@ class StockSearchTableViewCell: UITableViewCell {
 
     
     //MARK: IBOutlets
+    @IBOutlet weak var stockSymbol: UILabel!
     @IBOutlet weak var stockName: UILabel!
+    @IBOutlet weak var stockExchange: UILabel!
     
     
     
@@ -29,6 +31,8 @@ class StockSearchTableViewCell: UITableViewCell {
     
     //MARK: Update
     func updateCell(stock: Stock) {
-    	stockName.text = stock.name
+        stockSymbol.text = stock.symbol
+        stockName.text = stock.name
+        stockExchange.text = stock.exchange
     }
 }

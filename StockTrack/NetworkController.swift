@@ -16,7 +16,14 @@ class NetworkController {
     
     
     static func lookupStock(stock: String) -> NSURL? {
-        return NSURL(string: NetworkController.lookupBaseUrl + "\(stock)")!
+        let searchString = lookupBaseUrl + "\(stock)"
+        let spaceHandling = searchString.stringByReplacingOccurrencesOfString(" ", withString: "+")
+        
+        if let url = NSURL(string: spaceHandling) {
+            return url
+        } else {
+            return nil
+        }
     }
     
 	static func searchStockForInfo(stock: String) -> NSURL? {

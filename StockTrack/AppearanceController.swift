@@ -13,5 +13,15 @@ class AppearanceController {
     
     static func initializeAppearance() {
         UINavigationBar.appearance().barTintColor = UIColor.darkBlueColor()
+        UINavigationBar.appearance().tintColor = UIColor.mintGreenColor()
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSForegroundColorAttributeName:UIColor.mintGreenColor(),
+            NSFontAttributeName: UIFont(name: "Avenir-Book", size: 26)!
+        ]
+        
+        
     }
 }
