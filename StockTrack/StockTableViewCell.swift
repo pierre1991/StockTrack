@@ -34,11 +34,11 @@ class StockTableViewCell: UITableViewCell {
     
     func updateCell(stock: Stock) {
         self.stockName.text = stock.name
-
-	
     }
+    
+
 }
-        
+
        
 
         

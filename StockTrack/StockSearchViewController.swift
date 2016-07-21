@@ -64,6 +64,10 @@ extension StockSearchViewController: UITableViewDataSource, UITableViewDelegate 
             
             StockController.sharedController.addStock(selectedItem)
         }
+     	
+		dismissViewControllerAnimated(true) { 
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
 }
 
@@ -113,4 +117,5 @@ extension StockSearchViewController: UISearchResultsUpdating, UISearchBarDelegat
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
     }
+
 }
