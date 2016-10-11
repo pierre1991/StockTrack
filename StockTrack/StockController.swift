@@ -10,9 +10,10 @@ import Foundation
 
 class StockController {
     
-    private let kStock = "stocks"
+    fileprivate let kStock = "stocks"
     
     static let sharedController = StockController() 
+    
     
     
     var stocksArray: [Stock]
@@ -22,8 +23,7 @@ class StockController {
         loadFromPersistantStorage()
     }
     
-    
-    static func lookupStock(stock: String, completion: (stockArray: [Stock]?) -> Void) {
+	static func lookupStock(_ stock: String, completion: @escaping (_ stockArray: [Stock]?) -> Void) {
         if let url = NetworkController.lookupStock(stock) {
             NetworkController.dataAtUrl(url, completion: { (data) in
                 guard let dataArray = data else {
@@ -31,7 +31,7 @@ class StockController {
                     return
                 }
                 do {
-                    let resultArray = try NSJSONSerialization.JSONObjectWithData(dataArray, options: .AllowFragments) as? [[String:AnyObject]]
+                    let resultArray = try JSONSerialization.jsonObject(with: dataArray, options: .allowFragments) as? [[String:AnyObject]]
                     
                     var stockLookupArray: [Stock] = []
                     
@@ -42,39 +42,39 @@ class StockController {
                         	}
                     	}
                     }
-                    completion(stockArray: stockLookupArray)
+                    completion(stockLookupArray)
                 } catch {
                     print("Error serializing lookupStock data")
-                    completion(stockArray: nil)
+                    completion(nil)
                     return
                 }
             })
         } else {
-            completion(stockArray: nil)
+            completion(nil)
         }
     }
     
     
-    static func getStockInfo(stock: String, completion: (stockInformation: Stock?) -> Void) {
+    static func getStockInfo(_ stock: String, completion: @escaping (_ stockInformation: Stock?) -> Void) {
         if let url = NetworkController.searchStockForInfo(stock) {
             NetworkController.dataAtUrl(url, completion: { (data) in
                 guard let data = data else {
                     print("Error no data")
-                    completion(stockInformation: nil)
+                    completion(nil)
                     return
                 }
                 do {
-                    let resultDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                    let resultDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     
                     var stockObject: Stock?
                     
                     if let quoteDictionary = resultDictionary as? [String:AnyObject] {
                         stockObject = Stock(jsonDictionary: quoteDictionary)
                     }
-                    completion(stockInformation: stockObject)
+                    completion(stockObject)
                 } catch {
                     print("Error serializing")
-                    completion(stockInformation: nil)
+                    completion(nil)
                     return
                 }
             })
@@ -86,27 +86,26 @@ class StockController {
     
     //MARK: NSCoding
     func saveToPersistantStorage() {
-        NSKeyedArchiver.archiveRootObject(stocksArray, toFile: filePath(kStock))
+        NSKeyedArchiver.archiveRootObject(stocksArray, toFile: filePath(key: kStock))
     }
     
     func loadFromPersistantStorage() {
-        let unarchivedStocks = NSKeyedUnarchiver.unarchiveObjectWithFile(filePath(kStock))
+        let unarchivedStocks = NSKeyedUnarchiver.unarchiveObject(withFile: filePath(key: kStock))
         
         if let stocks = unarchivedStocks as? [Stock] {
             self.stocksArray = stocks
         }
     }
     
-    func addStock(stock: Stock) {
+    func addStock(_ stock: Stock) {
         stocksArray.append(stock)
         saveToPersistantStorage()
     }
     
-	func filePath(key: String) -> String {
-        let directoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .AllDomainsMask, true)
-        let documentsPath: AnyObject = directoryPath[0]
-        let stockPath = documentsPath.stringByAppendingString("/\(key).plist")
-        
-        return stockPath
+    func filePath(key: String) -> String {
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .allDomainsMask).first
+        return (url?.appendingPathComponent(key).path)!
     }
+
 }

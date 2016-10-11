@@ -15,33 +15,33 @@ class NetworkController {
     static let quoteBaseUrl = "http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol="
     
     
-    static func lookupStock(stock: String) -> NSURL? {
+    static func lookupStock(_ stock: String) -> URL? {
         let searchString = lookupBaseUrl + "\(stock)"
-        let spaceHandling = searchString.stringByReplacingOccurrencesOfString(" ", withString: "+")
+        let spaceHandling = searchString.replacingOccurrences(of: " ", with: "+")
         
-        if let url = NSURL(string: spaceHandling) {
+        if let url = URL(string: spaceHandling) {
             return url
         } else {
             return nil
         }
     }
     
-	static func searchStockForInfo(stock: String) -> NSURL? {
-        return NSURL(string: NetworkController.quoteBaseUrl + "\(stock)") ?? nil
+	static func searchStockForInfo(_ stock: String) -> URL? {
+        return URL(string: NetworkController.quoteBaseUrl + "\(stock)") ?? nil
     }
     
     
-    static func dataAtUrl(url: NSURL, completion:(data: NSData?) -> Void) {
-        let session = NSURLSession.sharedSession()
+    static func dataAtUrl(_ url: URL, completion:@escaping (_ data: Data?) -> Void) {
+        let session = URLSession.shared
         
-        let dataTask = session.dataTaskWithURL(url) { (data, _, error) -> Void in
+        let dataTask = session.dataTask(with: url, completionHandler: { (data, _, error) -> Void in
             guard let data = data else {
                 print(error?.localizedDescription)
-                completion(data: nil)
+                completion(nil)
                 return
             }
-            completion(data: data)
-        }
+            completion(data)
+        }) 
         dataTask.resume()
     }
 }

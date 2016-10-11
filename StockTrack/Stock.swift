@@ -10,16 +10,15 @@ import Foundation
 
 class Stock: NSObject, NSCoding {
     
-	private let kName = "Name"
-    private let kSymbol = "Symbol"
-    private let kLastPrice = "LastPrice"
-    private let kMarketCap = "MarketCap"
-    private let kVolume = "Volume"
-    private let kHigh = "High"
-    private let kLow = "Low"
-    private let kOpen = "Open"
-    
-    private let kExchange = "Exchange"
+	fileprivate let kName = "Name"
+    fileprivate let kSymbol = "Symbol"
+    fileprivate let kLastPrice = "LastPrice"
+    fileprivate let kMarketCap = "MarketCap"
+    fileprivate let kVolume = "Volume"
+    fileprivate let kHigh = "High"
+    fileprivate let kLow = "Low"
+    fileprivate let kOpen = "Open"
+    fileprivate let kExchange = "Exchange"
     
     var name: String?
     var symbol: String?
@@ -29,7 +28,6 @@ class Stock: NSObject, NSCoding {
     var high: Float?
     var low: Float?
     var open: Float?
-    
     var exchange: String?
     
     init?(jsonDictionary: [String:AnyObject]) {
@@ -37,6 +35,7 @@ class Stock: NSObject, NSCoding {
             self.name = ""
             return nil
         }
+        
         self.name = name
         self.symbol = jsonDictionary[kSymbol] as? String
         self.lastPrice = jsonDictionary[kLastPrice] as? Float
@@ -45,25 +44,20 @@ class Stock: NSObject, NSCoding {
         self.high = jsonDictionary[kHigh] as? Float
         self.low = jsonDictionary[kLow] as? Float
         self.open = jsonDictionary[kOpen] as? Float
-        
         self.exchange = jsonDictionary[kExchange] as? String
     }
     
-    
-    
     //MARK: NSCoding
-    @objc func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.name, forKey: kName)
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.name, forKey: kName)
+        aCoder.encode(self.symbol, forKey: kSymbol)
     }
     
-    @objc required init?(coder aDecoder: NSCoder) {
-        guard let name = aDecoder.decodeObjectForKey(kName) as? String else {
-            self.name = ""
-            
-            super.init()
-            return nil
-        }
+    required init?(coder aDecoder: NSCoder) {
+        guard let name = aDecoder.decodeObject(forKey: kName) as? String,
+            let symbol = aDecoder.decodeObject(forKey: kSymbol) as? String else {return}
+        
         self.name = name
-        super.init()
+        self.symbol = symbol
     }
 }

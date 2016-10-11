@@ -14,6 +14,7 @@ class StockSearchViewController: UIViewController {
     //MARK: Properties
     var stockSearchResults: [Stock]?
     
+    
     //Further UI
     var customSearchBar: CustomSearchBar!
     var searchController: UISearchController!
@@ -22,18 +23,19 @@ class StockSearchViewController: UIViewController {
     
     //MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
-    
+
     
 
 	//MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.tableFooterView = UIView()
         setupSearchController()
     }
 
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }    
 }
 
@@ -49,7 +51,7 @@ extension StockSearchViewController: UISearchResultsUpdating, UISearchBarDelegat
         
         searchController.searchBar.delegate = self
         
-        searchController.searchBar.keyboardAppearance = .Dark
+        searchController.searchBar.keyboardAppearance = .dark
         searchController.searchBar.barTintColor = UIColor.darkBlueColor()
         
         
@@ -59,15 +61,15 @@ extension StockSearchViewController: UISearchResultsUpdating, UISearchBarDelegat
 	}
     
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        let searchTerm = searchController.searchBar.text?.lowercaseString
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchTerm = searchController.searchBar.text?.lowercased()
         
         if let searchTerm = searchTerm {
 			StockController.lookupStock(searchTerm, completion: { (stockArray) in
                 if let stockArray = stockArray {
                     self.stockSearchResults = stockArray
                     
-                    dispatch_async(dispatch_get_main_queue(), {
+                    DispatchQueue.main.async(execute: {
 						self.tableView.reloadData()
                     })
                 }
@@ -76,54 +78,56 @@ extension StockSearchViewController: UISearchResultsUpdating, UISearchBarDelegat
     }
 
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        dismiss(animated: true, completion: nil)
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
     }
-    
-
-
 }
 
 
 
 extension StockSearchViewController: UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stockSearchResults?.count ?? 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("lookupCell", forIndexPath: indexPath) as! StockSearchTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "lookupCell", for: indexPath) as! StockSearchTableViewCell
         
         if let stockSearchResults = stockSearchResults {
-            let indexPath = stockSearchResults[indexPath.row]
+            let indexPath = stockSearchResults[(indexPath as NSIndexPath).row]
             
             cell.updateCell(indexPath)
-            cell.selectionStyle = .None
+            cell.selectionStyle = .none
         }
+        
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let stockSearchResults = stockSearchResults {
-            let selectedItem = stockSearchResults[indexPath.row]
+            let selectedItem = stockSearchResults[(indexPath as NSIndexPath).row]
             
             StockController.sharedController.addStock(selectedItem)
         }
         
-        dismissViewControllerAnimated(true) {
-            self.dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true) {
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchController.searchBar.resignFirstResponder()
     }
     

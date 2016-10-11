@@ -15,7 +15,7 @@ class AppearanceController {
         UINavigationBar.appearance().barTintColor = UIColor.darkBlueColor()
         UINavigationBar.appearance().tintColor = UIColor.mintGreenColor()
         UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
         UINavigationBar.appearance().titleTextAttributes = [
             NSForegroundColorAttributeName:UIColor.mintGreenColor(),

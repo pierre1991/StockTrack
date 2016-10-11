@@ -11,10 +11,7 @@ import UIKit
 class StockTableViewCell: UITableViewCell {
 
 
-    
-    
-    
-	//MARK: IBOutlets
+    //MARK: IBOutlets
     @IBOutlet weak var cellView: UIView!
     
     @IBOutlet weak var stockName: UILabel!
@@ -26,28 +23,38 @@ class StockTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
     
     
-    func updateCell(stock: Stock) {
+    func updateCell(_ stock: Stock) {
         self.stockName.text = stock.name
+        
+        for stock in StockController.sharedController.stocksArray {
+            guard let stockSymbol = stock.symbol else {return}
+            
+            StockController.getStockInfo(stockSymbol, completion: { (stockInfo) in
+                guard let stockInfo = stockInfo else {return}
+                
+               	print(stockInfo.lastPrice)
+                
+                self.stockInfo.text = String("\(stockInfo.lastPrice)")
+            })
+        }
     }
-    
-
 }
 
-       
-
-        
-        
 
 
-        
 
-        
+
+
+
+
+
+
 
 
 //        for stock in StockController.sharedController.stocksArray {

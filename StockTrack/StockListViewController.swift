@@ -15,12 +15,10 @@ class StockListViewController: UIViewController {
     var stock: [Stock] = {
         StockController.sharedController.stocksArray
     }()
-	
     
     
     //MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
-    
     
     
     //MARK: View Life Cyce
@@ -28,52 +26,52 @@ class StockListViewController: UIViewController {
         super.viewDidLoad()
         
         setNeedsStatusBarAppearanceUpdate()
-        
         setupNavigationBar()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        dispatch_async(dispatch_get_main_queue()) {
+        
+        DispatchQueue.main.async {
 			self.animateTable()
         }
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     func setupNavigationBar() {
         navigationItem.title = "StockTrack"
-        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.isTranslucent = false
     }
+
 }
 
 
 
 extension StockListViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return StockController.sharedController.stocksArray.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("stockCell", forIndexPath: indexPath) as! StockTableViewCell
-        let indexPath = StockController.sharedController.stocksArray[indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "stockCell", for: indexPath) as! StockTableViewCell
+        let stockPath = StockController.sharedController.stocksArray[(indexPath as NSIndexPath).row]
         
-        cell.updateCell(indexPath)
-    	cell.selectionStyle = .None
+        cell.updateCell(stockPath)
+    	cell.selectionStyle = .none
         
         return cell
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            StockController.sharedController.stocksArray.removeAtIndex(indexPath.row)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            StockController.sharedController.stocksArray.remove(at: (indexPath as NSIndexPath).row)
             StockController.sharedController.saveToPersistantStorage()
             
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 
@@ -89,7 +87,7 @@ extension StockListViewController: UITableViewDelegate, UITableViewDataSource {
         
         for i in cells {
             let cell: UITableViewCell = i as UITableViewCell
-            cell.transform = CGAffineTransformMakeTranslation(0, tableHeight)
+            cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
         }
         
         var index = 0
@@ -97,8 +95,8 @@ extension StockListViewController: UITableViewDelegate, UITableViewDataSource {
         for a in cells {
             let cell: UITableViewCell = a as UITableViewCell
             
-            UIView.animateWithDuration(1.0, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
-                cell.transform = CGAffineTransformMakeTranslation(0, 0);
+            UIView.animate(withDuration: 1.0, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+                cell.transform = CGAffineTransform(translationX: 0, y: 0);
                 }, completion: nil)
             
             index += 1

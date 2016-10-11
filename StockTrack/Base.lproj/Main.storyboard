@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I8c-ca-OU4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I8c-ca-OU4">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="1009.5"/>
+            <point key="canvasLocation" x="-56" y="1009"/>
         </scene>
         <!--Stock Search View Controller-->
         <scene sceneID="9wX-EC-bxx">
@@ -150,14 +150,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3KU-2N-5RA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3KU-2N-5RA">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.0" green="0.035294117647058823" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.39215686274509803" green="0.99607843137254903" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="lookupCell" rowHeight="88" id="Dqh-MT-JST" customClass="StockSearchTableViewCell" customModule="StockTrack" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dqh-MT-JST" id="oRa-aT-xdy">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="88"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLj-mr-xZ8">
@@ -205,6 +206,11 @@
                                                             <exclude reference="dZv-a3-TyY"/>
                                                         </mask>
                                                         <mask key="constraints">
+                                                            <exclude reference="AI4-da-qrR"/>
+                                                            <exclude reference="BTj-IC-9l2"/>
+                                                            <exclude reference="ImV-Nm-bix"/>
+                                                            <exclude reference="LoM-NO-SZR"/>
+                                                            <exclude reference="WTs-UL-jVQ"/>
                                                             <exclude reference="Adh-YD-Yty"/>
                                                             <exclude reference="DBT-KZ-5Hf"/>
                                                             <exclude reference="WWr-T4-PQr"/>
@@ -214,11 +220,6 @@
                                                             <exclude reference="VgY-jf-hyt"/>
                                                             <exclude reference="lDk-tf-97A"/>
                                                             <exclude reference="xVF-7t-3Te"/>
-                                                            <exclude reference="AI4-da-qrR"/>
-                                                            <exclude reference="BTj-IC-9l2"/>
-                                                            <exclude reference="ImV-Nm-bix"/>
-                                                            <exclude reference="LoM-NO-SZR"/>
-                                                            <exclude reference="WTs-UL-jVQ"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
@@ -228,6 +229,11 @@
                                                             <include reference="dZv-a3-TyY"/>
                                                         </mask>
                                                         <mask key="constraints">
+                                                            <include reference="AI4-da-qrR"/>
+                                                            <include reference="BTj-IC-9l2"/>
+                                                            <exclude reference="ImV-Nm-bix"/>
+                                                            <include reference="LoM-NO-SZR"/>
+                                                            <include reference="WTs-UL-jVQ"/>
                                                             <include reference="Adh-YD-Yty"/>
                                                             <include reference="DBT-KZ-5Hf"/>
                                                             <include reference="WWr-T4-PQr"/>
@@ -237,11 +243,6 @@
                                                             <include reference="VgY-jf-hyt"/>
                                                             <include reference="lDk-tf-97A"/>
                                                             <include reference="xVF-7t-3Te"/>
-                                                            <include reference="AI4-da-qrR"/>
-                                                            <include reference="BTj-IC-9l2"/>
-                                                            <exclude reference="ImV-Nm-bix"/>
-                                                            <include reference="LoM-NO-SZR"/>
-                                                            <include reference="WTs-UL-jVQ"/>
                                                         </mask>
                                                     </variation>
                                                 </view>
@@ -313,10 +314,10 @@
                                 <exclude reference="3KU-2N-5RA"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="q7W-g4-cWj"/>
                                 <exclude reference="FP5-GS-2pk"/>
                                 <exclude reference="WYF-ZG-yno"/>
                                 <exclude reference="y9E-m7-Zjm"/>
+                                <exclude reference="q7W-g4-cWj"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -324,10 +325,10 @@
                                 <include reference="3KU-2N-5RA"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="q7W-g4-cWj"/>
                                 <include reference="FP5-GS-2pk"/>
                                 <include reference="WYF-ZG-yno"/>
                                 <include reference="y9E-m7-Zjm"/>
+                                <include reference="q7W-g4-cWj"/>
                             </mask>
                         </variation>
                     </view>
@@ -338,7 +339,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frY-28-AS7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="1516.5"/>
+            <point key="canvasLocation" x="-57" y="1529.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EPl-AM-Xsg">
@@ -357,7 +358,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Fb-He-e1B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-511.5" y="1009.5"/>
+            <point key="canvasLocation" x="-633" y="1008.75"/>
         </scene>
     </scenes>
 </document>

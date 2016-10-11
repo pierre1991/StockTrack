@@ -23,14 +23,14 @@ class StockSearchTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
 
     
     
     //MARK: Update
-    func updateCell(stock: Stock) {
+    func updateCell(_ stock: Stock) {
         stockSymbol.text = stock.symbol
         stockName.text = stock.name
         stockExchange.text = stock.exchange
