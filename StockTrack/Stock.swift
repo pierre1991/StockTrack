@@ -49,15 +49,18 @@ class Stock: NSObject, NSCoding {
     
     //MARK: NSCoding
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.name, forKey: kName)
-        aCoder.encode(self.symbol, forKey: kSymbol)
+        aCoder.encode(name, forKey: kName)
+        aCoder.encode(symbol, forKey: kSymbol)
+        aCoder.encode(exchange, forKey: kExchange)
     }
     
     required init?(coder aDecoder: NSCoder) {
         guard let name = aDecoder.decodeObject(forKey: kName) as? String,
-            let symbol = aDecoder.decodeObject(forKey: kSymbol) as? String else {return}
+            let symbol = aDecoder.decodeObject(forKey: kSymbol) as? String,
+        	let exchange = aDecoder.decodeObject(forKey: kExchange) as? String else {return}
         
         self.name = name
         self.symbol = symbol
+        self.exchange = exchange
     }
 }

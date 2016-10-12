@@ -12,8 +12,7 @@ class StockController {
     
     fileprivate let kStock = "stocks"
     
-    static let sharedController = StockController() 
-    
+    static let sharedController = StockController()
     
     
     var stocksArray: [Stock]
@@ -22,6 +21,7 @@ class StockController {
         stocksArray = []
         loadFromPersistantStorage()
     }
+    
     
 	static func lookupStock(_ stock: String, completion: @escaping (_ stockArray: [Stock]?) -> Void) {
         if let url = NetworkController.lookupStock(stock) {
@@ -42,6 +42,7 @@ class StockController {
                         	}
                     	}
                     }
+                    
                     completion(stockLookupArray)
                 } catch {
                     print("Error serializing lookupStock data")
@@ -64,16 +65,17 @@ class StockController {
                     return
                 }
                 do {
-                    let resultDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    let resultDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]
                     
                     var stockObject: Stock?
                     
-                    if let quoteDictionary = resultDictionary as? [String:AnyObject] {
+                    if let quoteDictionary = resultDictionary {
                         stockObject = Stock(jsonDictionary: quoteDictionary)
                     }
+                    
                     completion(stockObject)
                 } catch {
-                    print("Error serializing")
+                    print("Error serializing getStockInfo data \(error.localizedDescription)")
                     completion(nil)
                     return
                 }

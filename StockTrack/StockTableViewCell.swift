@@ -38,9 +38,11 @@ class StockTableViewCell: UITableViewCell {
             StockController.getStockInfo(stockSymbol, completion: { (stockInfo) in
                 guard let stockInfo = stockInfo else {return}
                 
-               	print(stockInfo.lastPrice)
+                guard let lastPrice = stockInfo.lastPrice else {return}
                 
-                self.stockInfo.text = String("\(stockInfo.lastPrice)")
+                DispatchQueue.main.async {
+                    self.stockInfo.text = "$\(lastPrice)"
+                }
             })
         }
     }

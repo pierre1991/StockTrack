@@ -69,9 +69,9 @@ extension StockSearchViewController: UISearchResultsUpdating, UISearchBarDelegat
                 if let stockArray = stockArray {
                     self.stockSearchResults = stockArray
                     
-                    DispatchQueue.main.async(execute: {
+                    DispatchQueue.main.async {
 						self.tableView.reloadData()
-                    })
+                    }
                 }
             })
         }
@@ -79,7 +79,6 @@ extension StockSearchViewController: UISearchResultsUpdating, UISearchBarDelegat
 
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

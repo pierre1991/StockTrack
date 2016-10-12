@@ -32,9 +32,7 @@ class StockListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DispatchQueue.main.async {
-			self.animateTable()
-        }
+		tableView.reloadData()
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -44,6 +42,22 @@ class StockListViewController: UIViewController {
     func setupNavigationBar() {
         navigationItem.title = "StockTrack"
         navigationController?.navigationBar.isTranslucent = false
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    
+    
+    
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationViewController = segue.destination as? StockDetailViewController
+        
+        if segue.identifier == "toStockDetailView" {
+           	guard let indexPath = tableView.indexPathForSelectedRow else {return}
+            let stock = StockController.sharedController.stocksArray[indexPath.row]
+            
+            destinationViewController?.stock = stock
+        }
     }
 
 }
@@ -74,6 +88,8 @@ extension StockListViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
+    
 
     
     
