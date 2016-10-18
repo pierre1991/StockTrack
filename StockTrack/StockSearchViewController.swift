@@ -65,17 +65,22 @@ extension StockSearchViewController: UISearchResultsUpdating, UISearchBarDelegat
         let searchTerm = searchController.searchBar.text?.lowercased()
         
         if let searchTerm = searchTerm {
-			StockController.lookupStock(searchTerm, completion: { (stockArray) in
+            StockController.lookupStock(searchTerm, completion: { (stockArray) in
                 if let stockArray = stockArray {
                     self.stockSearchResults = stockArray
                     
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                    
                     DispatchQueue.main.async {
-						self.tableView.reloadData()
+                        self.tableView.reloadData()
                     }
+                    
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
             })
         }
     }
+
 
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -105,7 +110,7 @@ extension StockSearchViewController: UITableViewDataSource, UITableViewDelegate,
         let cell = tableView.dequeueReusableCell(withIdentifier: "lookupCell", for: indexPath) as! StockSearchTableViewCell
         
         if let stockSearchResults = stockSearchResults {
-            let indexPath = stockSearchResults[(indexPath as NSIndexPath).row]
+            let indexPath = stockSearchResults[indexPath.row]
             
             cell.updateCell(indexPath)
             cell.selectionStyle = .none
@@ -116,7 +121,7 @@ extension StockSearchViewController: UITableViewDataSource, UITableViewDelegate,
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let stockSearchResults = stockSearchResults {
-            let selectedItem = stockSearchResults[(indexPath as NSIndexPath).row]
+            let selectedItem = stockSearchResults[indexPath.row]
             
             StockController.sharedController.addStock(selectedItem)
         }

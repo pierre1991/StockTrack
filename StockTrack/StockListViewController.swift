@@ -10,13 +10,7 @@ import UIKit
 
 class StockListViewController: UIViewController {
     
-    
-    var stocks: Stock?
-    var stock: [Stock] = {
-        StockController.sharedController.stocksArray
-    }()
-    
-    
+
     //MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,7 +20,9 @@ class StockListViewController: UIViewController {
         super.viewDidLoad()
         
         setNeedsStatusBarAppearanceUpdate()
+        
         setupNavigationBar()
+        setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,14 +31,22 @@ class StockListViewController: UIViewController {
 		tableView.reloadData()
     }
     
+    
+    //MARK: Status Bar
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
     
+    
+    //MARK: View Setup
     func setupNavigationBar() {
         navigationItem.title = "StockTrack"
         navigationController?.navigationBar.isTranslucent = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    func setupTableView() {
+        tableView.tableFooterView = UIView()
     }
     
     
@@ -72,7 +76,7 @@ extension StockListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stockCell", for: indexPath) as! StockTableViewCell
-        let stockPath = StockController.sharedController.stocksArray[(indexPath as NSIndexPath).row]
+        let stockPath = StockController.sharedController.stocksArray[indexPath.row]
         
         cell.updateCell(stockPath)
     	cell.selectionStyle = .none

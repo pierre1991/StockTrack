@@ -27,20 +27,14 @@ class NetworkController {
         })
         dataTask.resume()
     }
+
     
-    static func lookupStock(_ stock: String) -> URL? {
-        let searchString = lookupBaseUrl + "\(stock)"
-        let spaceHandling = searchString.replacingOccurrences(of: " ", with: "+")
-        
-        if let url = URL(string: spaceHandling) {
-            return url
-        } else {
-            return nil
-        }
+    static func lookupStock(_ keyword: String) -> URL? {
+    	return URL(string: lookupBaseUrl + "\(keyword)")
     }
     
     static func searchStockForInfo(_ stock: String) -> URL? {
-        return URL(string: NetworkController.quoteBaseUrl + "\(stock)")
+        return URL(string: quoteBaseUrl + "\(stock)")
     }
     
 }
