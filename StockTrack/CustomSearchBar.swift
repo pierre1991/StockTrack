@@ -25,7 +25,7 @@ class CustomSearchBar: UISearchBar {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     
@@ -41,13 +41,26 @@ class CustomSearchBar: UISearchBar {
             searchField.backgroundColor = barTintColor
     	}
     
+        
+        let path = UIBezierPath()
+        let startPoint = CGPoint(x: 0.0, y: frame.size.height)
+        let endPoint = CGPoint(x: frame.size.width, y: frame.size.height)
+        path.move(to: startPoint)
+        path.addLine(to: endPoint)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = preferredTextColor.cgColor
+        shapeLayer.lineWidth = 1.0
+        
+        layer.addSublayer(shapeLayer)
+        
+        
         super.draw(rect)
     }
 
     func indexOfSearchFieldInSubviews() -> Int? {
-        print(subviews[0].subviews)
-		
-        var index: Int!
+    	var index: Int!
         let searchBarSubviews = self.subviews[0]
         
         for i in 0 ..< searchBarSubviews.subviews.count {
@@ -56,6 +69,7 @@ class CustomSearchBar: UISearchBar {
                 break
             }
     	}
+        
         return index
     }
 }

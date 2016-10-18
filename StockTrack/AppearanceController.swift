@@ -17,6 +17,11 @@ class AppearanceController {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
+//        UINavigationBar.appearance().layer.shadowColor = UIColor.mintGreenColor().cgColor
+//        UINavigationBar.appearance().layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+//        UINavigationBar.appearance().layer.shadowRadius = 4.0
+//        UINavigationBar.appearance().layer.shadowOpacity = 1.0
+
         UINavigationBar.appearance().titleTextAttributes = [
             NSForegroundColorAttributeName:UIColor.mintGreenColor(),
             NSFontAttributeName: UIFont(name: "Avenir-Book", size: 26)!

@@ -24,7 +24,6 @@
 		8F49A9381DAE9250005B7C4F /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F49A9371DAE9250005B7C4F /* StockDetailViewController.swift */; };
 		8FEA78631D33F71500A2AAAA /* StockSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEA78621D33F71500A2AAAA /* StockSearchViewController.swift */; };
 		8FEA78651D33FAF900A2AAAA /* StockSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEA78641D33FAF900A2AAAA /* StockSearchTableViewCell.swift */; };
-		8FEA78681D3456BC00A2AAAA /* NSNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEA78671D3456BC00A2AAAA /* NSNotifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +67,6 @@
 		8F49A9371DAE9250005B7C4F /* StockDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
 		8FEA78621D33F71500A2AAAA /* StockSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockSearchViewController.swift; sourceTree = "<group>"; };
 		8FEA78641D33FAF900A2AAAA /* StockSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockSearchTableViewCell.swift; sourceTree = "<group>"; };
-		8FEA78671D3456BC00A2AAAA /* NSNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSNotifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				8F10A7D01D2C7ABA00F06E7C /* NetworkController.swift */,
-				8FEA78671D3456BC00A2AAAA /* NSNotifications.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -352,7 +349,6 @@
 				8F10A7DC1D2CA26F00F06E7C /* StockTableViewCell.swift in Sources */,
 				8FEA78651D33FAF900A2AAAA /* StockSearchTableViewCell.swift in Sources */,
 				8F10A7DA1D2CA19900F06E7C /* StockListViewController.swift in Sources */,
-				8FEA78681D3456BC00A2AAAA /* NSNotifications.swift in Sources */,
 				8F49A9381DAE9250005B7C4F /* StockDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
