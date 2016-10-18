@@ -29,22 +29,37 @@ class StockTableViewCell: UITableViewCell {
     
     
     
+    //MARK: Builder Function
     func updateCell(_ stock: Stock) {
         self.stockName.text = stock.name
-        
-        for stock in StockController.sharedController.stocksArray {
-            guard let stockSymbol = stock.symbol else {return}
-            
-            StockController.getStockInfo(stockSymbol, completion: { (stockInfo) in
-                guard let stockInfo = stockInfo else {return}
-                
-                guard let lastPrice = stockInfo.lastPrice else {return}
-                
+		
+        guard let stockSymbol = stock.symbol else {return}
+
+        StockController.getStockInfo(stockSymbol, completion: { (stockInfo) in
+            guard let stockInfo = stockInfo else {return}
+
+            if let stockLastPrice = stockInfo.lastPrice {
                 DispatchQueue.main.async {
-                    self.stockInfo.text = "$\(lastPrice)"
+                    self.stockInfo.text = "$\(stockLastPrice)"
                 }
-            })
-        }
+            }
+        })
+        
+        
+        
+//        for stock in StockController.sharedController.stocksArray {
+//            guard let stockSymbol = stock.symbol else {return}
+//            
+//            StockController.getStockInfo(stockSymbol, completion: { (stockInfo) in
+//                guard let stockInfo = stockInfo else {return}
+//                
+//                if let stockLastPrice = stockInfo.lastPrice {
+//                    DispatchQueue.main.async {
+//                        self.stockInfo.text = "$\(stockLastPrice)"
+//                    }
+//                }
+//            })
+//        }
     }
 }
 
