@@ -30,6 +30,13 @@ class Stock: NSObject, NSCoding {
     var open: Float?
     var exchange: String?
     
+    init(name: String? = nil, symbol: String? = nil, exchange: String? = nil) {
+        self.name = name
+        self.symbol = symbol
+        self.exchange = exchange
+    }
+    
+    
     init?(jsonDictionary: [String:AnyObject]) {
         guard let name = jsonDictionary[kName] as? String else {
             self.name = ""

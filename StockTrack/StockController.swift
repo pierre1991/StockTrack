@@ -15,10 +15,17 @@ class StockController {
     static let sharedController = StockController()
     
     
-    var stocksArray: [Stock]
+    var stocksArray: [Stock] = [
+        Stock(name: "Apple Inc", symbol: "AAPL", exchange: "NASDAQ"),
+        Stock(name: "Alphabet Inc", symbol: "GOOGL", exchange: "NASDAQ"),
+        Stock(name: "Amazon.com Inc", symbol: "AMZN", exchange: "NASDAQ"),
+        Stock(name: "Facebook, Inc", symbol: "FB", exchange: "NASDAQ"),
+        Stock(name: "Microsoft Corp", symbol: "MSFT", exchange: "NASDAQ"),
+        Stock(name: "Twitter Inc", symbol: "TWTR", exchange: "NYSE"),
+        Stock(name: "Yahoo! Inc", symbol: "YHOO", exchange: "NASDAQ")
+    ]
     
     init() {
-        stocksArray = []
         loadFromPersistantStorage()
     }
     
@@ -45,7 +52,7 @@ class StockController {
                     
                     completion(stockLookupArray)
                 } catch {
-                    print("Error serializing lookupStock data")
+                    print("Error serializing lookupStock data..\(error.localizedDescription)")
                     completion(nil)
                     return
                 }
@@ -67,7 +74,7 @@ class StockController {
                 do {
                     let resultDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]
                     
-                    var stockObject: Stock?
+                    var stockObject: Stock? = nil
                     
                     if let quoteDictionary = resultDictionary {
                         stockObject = Stock(jsonDictionary: quoteDictionary)
