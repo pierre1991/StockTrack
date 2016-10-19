@@ -13,6 +13,7 @@ class StockListViewController: UIViewController {
 
     //MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noStocksView: UIView!
     
     
     //MARK: View Life Cyce
@@ -40,7 +41,7 @@ class StockListViewController: UIViewController {
     
     //MARK: View Setup
     func setupNavigationBar() {
-        navigationItem.title = "StockTrack"
+        navigationItem.title = "StockLook"
         navigationController?.navigationBar.isTranslucent = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
@@ -71,6 +72,13 @@ class StockListViewController: UIViewController {
 extension StockListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if StockController.sharedController.stocksArray.count == 0 {
+            self.noStocksView.isHidden = false
+        } else if StockController.sharedController.stocksArray.count > 0 {
+            self.noStocksView.isHidden = true 
+        	return StockController.sharedController.stocksArray.count
+        }
+        
         return StockController.sharedController.stocksArray.count
     }
     
