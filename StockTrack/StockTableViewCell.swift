@@ -40,68 +40,10 @@ class StockTableViewCell: UITableViewCell {
 
             if let stockLastPrice = stockInfo.lastPrice {
                 DispatchQueue.main.async {
-                    self.stockInfo.text = "$\(stockLastPrice)"
+                    self.stockInfo.text = "\(NumberFormatter.currencyFormatter(number: stockLastPrice))"
                 }
             }
         })
-        
-        
-        
-//        for stock in StockController.sharedController.stocksArray {
-//            guard let stockSymbol = stock.symbol else {return}
-//            
-//            StockController.getStockInfo(stockSymbol, completion: { (stockInfo) in
-//                guard let stockInfo = stockInfo else {return}
-//                
-//                if let stockLastPrice = stockInfo.lastPrice {
-//                    DispatchQueue.main.async {
-//                        self.stockInfo.text = "$\(stockLastPrice)"
-//                    }
-//                }
-//            })
-//        }
     }
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-//        for stock in StockController.sharedController.stocksArray {
-//            StockController.getStockInfo(stock, completion: { (stockInfo) in
-//                if let stockInfo = stockInfo {
-//                    dispatch_async(dispatch_get_main_queue(), { 
-//                			self.stockInfo.text = String(stockInfo.lastPrice)
-//                    })
-//                }
-//            })
-//        }
-
-
-//StockController.getStockInfo(stock.name!) { (stockInfo) in
-//    if let stockInfo = stockInfo {
-//        dispatch_async(dispatch_get_main_queue(), {
-//            self.stockInfo.text = String(stockInfo.lastPrice)
-//        })
-//    }
-//}
-
-//for stock in StockController.sharedController.stocksArray {
-//    StockController.getStockInfo(stock.name!, completion: { (stockInfo) in
-//        if let stockInfo = stockInfo {
-//            dispatch_async(dispatch_get_main_queue(), {
-//                self.stockInfo.text = String(stockInfo.lastPrice)
-//            })
-//        }
-//    })
-//}
-
-
-
