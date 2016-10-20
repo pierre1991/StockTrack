@@ -94,10 +94,11 @@ extension StockListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            StockController.sharedController.stocksArray.remove(at: (indexPath as NSIndexPath).row)
+            StockController.sharedController.stocksArray.remove(at: indexPath.row)
             StockController.sharedController.saveToPersistantStorage()
             
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         }
     }
     
