@@ -48,14 +48,13 @@ extension StockSearchViewController: UISearchResultsUpdating, UISearchBarDelegat
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        
+    
         searchController.searchBar.delegate = self
-        
-        searchController.searchBar.keyboardAppearance = .dark
+		searchController.searchBar.keyboardAppearance = .dark
         searchController.searchBar.barTintColor = UIColor.darkBlueColor()
+        searchController.searchBar.tintColor = UIColor.mintGreenColor()
         
-        
-    	providesPresentationContextTransitionStyle = true
+        providesPresentationContextTransitionStyle = true
         
         tableView.tableHeaderView = searchController.searchBar
 	}
