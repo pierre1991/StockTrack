@@ -22,6 +22,7 @@
 		8F10A8281D2DB81F00F06E7C /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10A8271D2DB81F00F06E7C /* ColorPalette.swift */; };
 		8F10A82B1D2DB89E00F06E7C /* AppearanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10A82A1D2DB89E00F06E7C /* AppearanceController.swift */; };
 		8F49A9381DAE9250005B7C4F /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F49A9371DAE9250005B7C4F /* StockDetailViewController.swift */; };
+		8F49A9411DB7D636005B7C4F /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F49A9401DB7D636005B7C4F /* NumberFormatter.swift */; };
 		8FEA78631D33F71500A2AAAA /* StockSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEA78621D33F71500A2AAAA /* StockSearchViewController.swift */; };
 		8FEA78651D33FAF900A2AAAA /* StockSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEA78641D33FAF900A2AAAA /* StockSearchTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		8F10A8271D2DB81F00F06E7C /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		8F10A82A1D2DB89E00F06E7C /* AppearanceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceController.swift; sourceTree = "<group>"; };
 		8F49A9371DAE9250005B7C4F /* StockDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
+		8F49A9401DB7D636005B7C4F /* NumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		8FEA78621D33F71500A2AAAA /* StockSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockSearchViewController.swift; sourceTree = "<group>"; };
 		8FEA78641D33FAF900A2AAAA /* StockSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockSearchTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,16 +120,14 @@
 			isa = PBXGroup;
 			children = (
 				8F10A7A01D2C739000F06E7C /* AppDelegate.swift */,
-				8F10A7A41D2C739000F06E7C /* Main.storyboard */,
-				8F10A7A71D2C739000F06E7C /* Assets.xcassets */,
-				8F10A7A91D2C739000F06E7C /* LaunchScreen.storyboard */,
-				8F10A7AC1D2C739000F06E7C /* Info.plist */,
+				8F49A93F1DB6C3E6005B7C4F /* Resources */,
 				8F10A7D41D2C8CB400F06E7C /* Model */,
 				8F10A7D61D2C8CD300F06E7C /* Model Controller */,
 				8F10A7D51D2C8CC100F06E7C /* Controller */,
 				8F10A7DE1D2CAB9B00F06E7C /* View Controller */,
 				8F10A7DD1D2CAB9600F06E7C /* View */,
 				8F10A8291D2DB87500F06E7C /* Appearance */,
+				8F49A9421DB7D63B005B7C4F /* Extension */,
 			);
 			path = StockTrack;
 			sourceTree = "<group>";
@@ -201,6 +201,25 @@
 				8F08C4671D40A1E800DB01D9 /* CustomSearchBar.swift */,
 			);
 			name = Appearance;
+			sourceTree = "<group>";
+		};
+		8F49A93F1DB6C3E6005B7C4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8F10A7A41D2C739000F06E7C /* Main.storyboard */,
+				8F10A7A71D2C739000F06E7C /* Assets.xcassets */,
+				8F10A7A91D2C739000F06E7C /* LaunchScreen.storyboard */,
+				8F10A7AC1D2C739000F06E7C /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		8F49A9421DB7D63B005B7C4F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8F49A9401DB7D636005B7C4F /* NumberFormatter.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +367,7 @@
 				8F10A7D11D2C7ABA00F06E7C /* NetworkController.swift in Sources */,
 				8F10A7DC1D2CA26F00F06E7C /* StockTableViewCell.swift in Sources */,
 				8FEA78651D33FAF900A2AAAA /* StockSearchTableViewCell.swift in Sources */,
+				8F49A9411DB7D636005B7C4F /* NumberFormatter.swift in Sources */,
 				8F10A7DA1D2CA19900F06E7C /* StockListViewController.swift in Sources */,
 				8F49A9381DAE9250005B7C4F /* StockDetailViewController.swift in Sources */,
 			);
