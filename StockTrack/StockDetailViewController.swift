@@ -18,6 +18,7 @@ class StockDetailViewController: UIViewController {
     //MARK: IBOutlets
     @IBOutlet weak var stockName: UILabel!
     @IBOutlet weak var stockExchange: UILabel!
+    @IBOutlet weak var stockSymbol: UILabel!
     @IBOutlet weak var stockPrice: UILabel!
     @IBOutlet weak var openPrice: UILabel!
     @IBOutlet weak var highPrice: UILabel!
@@ -36,6 +37,7 @@ class StockDetailViewController: UIViewController {
         
         stockName.text = stock.name
         stockExchange.text = stock.exchange
+        stockSymbol.text = stock.symbol
         
         getStockInfo()
     }
