@@ -19,7 +19,7 @@ class NetworkController {
         
         let dataTask = session.dataTask(with: url, completionHandler: { (data, _, error) -> Void in
             guard let data = data else {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription ?? "no data at url")
                 completion(nil)
                 return
             }
