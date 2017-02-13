@@ -133,34 +133,5 @@ extension StockSearchViewController: UITableViewDataSource, UITableViewDelegate,
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchController.searchBar.resignFirstResponder()
     }
-    
-    
-    
-    
-    
-    
-    
-//    //MARK: Helper Functions
-//    func animateTable() {
-//        self.tableView.reloadData()
-//        
-//        let cells = tableView.visibleCells
-//        let tableHeight: CGFloat = tableView.bounds.size.height
-//        
-//        for i in cells {
-//            let cell: UITableViewCell = i as UITableViewCell
-//            cell.transform = CGAffineTransformMakeTranslation(0, tableHeight)
-//        }
-//        
-//        var index = 0
-//        
-//        for a in cells {
-//            let cell: UITableViewCell = a as UITableViewCell
-//            
-//            UIView.animateWithDuration(1.0, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
-//                cell.transform = CGAffineTransformMakeTranslation(0, 0)
-//                }, completion: nil)
-//            index += 1
-//        }
-//    }
+
 }

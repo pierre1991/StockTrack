@@ -103,11 +103,7 @@ extension StockListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-
-    
-    
-    
-    //MARK: Helper Functions
+	//MARK: Helper Functions
     func animateTable() {
         self.tableView.reloadData()
         
